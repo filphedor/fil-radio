@@ -1,0 +1,27 @@
+.nav-bar {
+    display: flex;
+
+    width: 100%;
+
+    border-bottom: 1px solid black;
+}
+
+.nav-bar__spacer {
+    flex: 1 1 auto;
+}
+
+.nav-bar__auth {
+    flex: 0 0 auto;
+}
+
+.nav-bar__user {
+    flex: 0 0 auto;
+
+    padding: 1em;
+}
+
+.nav-bar__log-in {
+    flex: 0 0 auto;
+
+    padding: 1em;
+}

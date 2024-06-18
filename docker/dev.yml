@@ -1,0 +1,20 @@
+version: '2.4'
+services:
+    client:
+        build:
+            target: npm
+        entrypoint: ["npm", "run", "dev"]
+        volumes:
+            - ../client/src:/home/dockeruser/project/src
+        env_file:
+            - .dev.env
+            - .local.env
+    api:
+        entrypoint: ["npm", "run", "dev"]
+        volumes:
+            - ../api/src:/home/dockeruser/project/src
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        env_file:
+            - .dev.env
+            - .local.env

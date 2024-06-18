@@ -1,0 +1,19 @@
+version: '2.4'
+name: chatty
+services:
+    client:
+        build:
+            context: ../client
+            dockerfile: ../docker/client.Dockerfile
+            args:
+                - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+                - QUEUE_HOST=${QUEUE_HOST}
+        ports:
+            - 3000:3000
+    api:
+        build:
+            context: ../api
+            dockerfile: ../docker/api.Dockerfile
+        ports:
+            - 4000:4000
+            - 5000:5000
