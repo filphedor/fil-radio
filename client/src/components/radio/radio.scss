@@ -7,82 +7,24 @@
     display: flex;
 }
 
-.radio__search-section {
+.radio__search {
     display: flex;
 
     flex: 1 1 0;
     flex-direction: column;
 
-    border-right: 1px solid #222222;
+    max-width: 20em;
 }
 
-.radio__search {
-    flex: 0 0 auto;
-
-    padding: 1em;
-}
-
-.radio__search-input {
-    padding: .25em;
-}
-
-.radio__search-results {
-    flex: 1 1 0;
-
-    overflow-y: scroll;
-}
-
-.radio__search-result {
+.radio__player {
     position: relative;
-
-    padding: 0.5em;
-
-    &:hover {
-        .radio__search-add {
-            display: block;
-        }
-    }
-}
-
-.radio__search-name {
-    font-size: 1em;
-    font-weight: 600;
-
-    color: #111111;
-}
-
-.radio__search-result {
-    font-size: 0.9em;
-    font-weight: 300;
-
-    color: #666666;
-}
-
-.radio__search-add {
-    position: absolute;
-    display: none;
-
-    top: 50%;
-    right: 0;
-
-    transform: translateY(-50%);
-
-    font-size: 0.9em;
-    font-weight: 300;
-
-    cursor: pointer;
-
-    color: #666666;
-}
-
-.radio__player-section {
     display: flex;
     
     flex: 3 3 0;
     flex-direction: column;
 }
 
-.radio__queue-section {
+.radio__queue {
     display: flex;
     
     flex: 1 1 0;
@@ -91,14 +33,36 @@
     border-left: 1px solid #222222;
 }
 
-.radio__queue {
-    flex: 0 0 auto;
+.radio__background {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-    padding: 1em;
+    background-color: #050505;
 }
 
-.radio__queue-results {
-    flex: 1 1 0;
+.radio__background-image {
+    position: absolute;
+    top: 35%;
+    left: 50%;
 
-    overflow-y: scroll;
+    width: 40%;
+    height: 40%;
+
+
+    transform: translate(-50%, -50%);
+
+}
+
+.radio__current-song-display {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+
+    font-size: 3em;
+    text-align: center;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
 }

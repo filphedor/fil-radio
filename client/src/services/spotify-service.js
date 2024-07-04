@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import createSongModel from '/util/create-song-model';
+
 
 const generateRandomString = (length) => {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -127,26 +129,8 @@ export default class SpotifyService {
 
         const data = response.data;
 
-        let buildTrackModel = function(spotifyTrack) {
-            let track = {};
-
-            track.id = spotifyTrack.id;
-            track.name = spotifyTrack.name;
-            track.artist = spotifyTrack.artists.map((artist) => {
-                return artist.name;
-            }).reduce((prev, curr, index) => {
-                if (index) {
-                    return prev + ', ' + curr
-                }
-
-                return prev + curr;
-            }, '');
-
-            return track;
-        };
-
         return data.tracks.items.map((t) => {
-            return buildTrackModel(t);
+            return createSongModel(t);
         });
     }
 
@@ -163,26 +147,8 @@ export default class SpotifyService {
 
         const data = response.data;
 
-        let buildTrackModel = function(spotifyTrack) {
-            let track = {};
-
-            track.id = spotifyTrack.id;
-            track.name = spotifyTrack.name;
-            track.artist = spotifyTrack.artists.map((artist) => {
-                return artist.name;
-            }).reduce((prev, curr, index) => {
-                if (index) {
-                    return prev + ', ' + curr
-                }
-
-                return prev + curr;
-            }, '');
-
-            return track;
-        };
-
         return data.queue.map((t) => {
-            return buildTrackModel(t);
+            return createSongModel(t);
         });
     }
 

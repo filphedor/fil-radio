@@ -1,0 +1,25 @@
+.queue {
+    display: flex;
+
+    flex-direction: column-reverse;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #050505;
+}
+
+.queue {
+    flex: 0 0 auto;
+
+    padding: 1em;
+}
+
+.queue__results {
+    flex: 1 1 0;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    overflow-y: scroll;
+}

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { io } from "socket.io-client";
 
+import createSongModel from '/util/create-song-model';
+
 
 export default class QueueService {
     constructor(apiHost, eventHost) {
@@ -105,26 +107,8 @@ export default class QueueService {
             let response = await axios.get(url);
 
             if (response.status === 200) {
-                let buildTrackModel = function(spotifyTrack) {
-                    let track = {};
-        
-                    track.id = spotifyTrack.id;
-                    track.name = spotifyTrack.name;
-                    track.artist = spotifyTrack.artists.map((artist) => {
-                        return artist.name;
-                    }).reduce((prev, curr, index) => {
-                        if (index) {
-                            return prev + ', ' + curr
-                        }
-        
-                        return prev + curr;
-                    }, '');
-        
-                    return track;
-                };
-
                 return response.data.map((track) => {
-                    return buildTrackModel(track);
+                    return createSongModel(track);
                 });
             }
         } catch(e) {
@@ -139,29 +123,12 @@ export default class QueueService {
             let response = await axios.get(url);
 
             if (response.status === 200) {
-                let buildTrackModel = function(spotifyTrack) {
-                    let track = {};
-        
-                    track.id = spotifyTrack.id;
-                    track.name = spotifyTrack.name;
-                    track.artist = spotifyTrack.artists.map((artist) => {
-                        return artist.name;
-                    }).reduce((prev, curr, index) => {
-                        if (index) {
-                            return prev + ', ' + curr
-                        }
-        
-                        return prev + curr;
-                    }, '');
-        
-                    return track;
-                };
 
                 if (!response.data) {
                     return null;
                 }
 
-                return buildTrackModel(response.data);
+                return createSongModel(response.data);
             }
         } catch(e) {
             console.log(e)
